@@ -16,20 +16,22 @@ class EditableForm extends Component {
 
   render() {
     const { isEditing } = this.state;
-    const { formChildren, previewChildren } = this.props;
+    const { formChildren, previewChildren, filterEmptyItems } = this.props;
     return isEditing ? (
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          this.handleEditing();
+          if (filterEmptyItems) filterEmptyItems();
+        }}
+      >
         {formChildren}
-        <button type="button" onClick={this.handleEditing}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     ) : (
       <div>
         {previewChildren}
-        <button type="button" onClick={this.handleEditing}>
-          Edit
-        </button>
+        <button onClick={this.handleEditing}>Edit</button>
       </div>
     );
   }
