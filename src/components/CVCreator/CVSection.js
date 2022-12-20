@@ -6,7 +6,12 @@ class CVSection extends Component {
     super(props);
     const { FormComponent } = this.props;
     this.state = {
-      formList: [{ form: <FormComponent />, id: uniqid() }],
+      formList: [
+        {
+          form: <FormComponent />,
+          id: uniqid(),
+        },
+      ],
     };
   }
   addForm = (FormComponent) => {
@@ -21,7 +26,6 @@ class CVSection extends Component {
 
   deleteForm = (e) => {
     const id = e.target.dataset.id;
-    console.log(id)
     const updatedFormList = this.state.formList.filter((el) => el.id !== id);
     this.setState({
       formList: updatedFormList,
