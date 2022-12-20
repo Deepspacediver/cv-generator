@@ -27,7 +27,6 @@ class GeneralForm extends Component {
     const { name, title, location, email, phone, introduction } = this.state;
     const formContent = (
       <div>
-        {" "}
         <label htmlFor="name">
           <input
             name="name"
