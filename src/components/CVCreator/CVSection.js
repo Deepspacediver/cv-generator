@@ -34,20 +34,28 @@ class CVSection extends Component {
 
   render() {
     const { formList } = this.state;
-    const { FormComponent } = this.props;
+    const { FormComponent, formName } = this.props;
     return (
-      <div>
-        {formList.map((obj) => {
+      <div className={"cv-section " + formName.toLowerCase()}>
+        <h2>{formName}</h2>
+        {formList.map((obj, i) => {
           return (
-            <div key={obj.id}>
+            <div className={formName.toLowerCase() + "-container"} key={obj.id}>
               {obj.form}
-              <button data-id={obj.id} onClick={this.deleteForm}>
-                Delete me
-              </button>
+              {i === 0 ? null : (
+                <button data-id={obj.id} onClick={this.deleteForm}>
+                  Remove
+                </button>
+              )}
             </div>
           );
         })}
-        <button onClick={() => this.addForm(<FormComponent />)}>AddForm</button>
+        <button
+          className={"add-btn " + formName.toLowerCase()}
+          onClick={() => this.addForm(<FormComponent />)}
+        >
+          &#x2B; {formName}
+        </button>
       </div>
     );
   }

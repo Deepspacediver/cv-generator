@@ -26,10 +26,11 @@ class GeneralForm extends Component {
   render() {
     const { name, title, location, email, phone, introduction } = this.state;
     const formContent = (
-      <div>
+      <>
         <label htmlFor="name">
           <input
             name="name"
+            id="full-name-input"
             type="text"
             value={name}
             onChange={this.handleChange}
@@ -39,6 +40,7 @@ class GeneralForm extends Component {
         <label htmlFor="title">
           <input
             name="title"
+            id="title-input"
             type="text"
             value={title}
             onChange={this.handleChange}
@@ -48,6 +50,7 @@ class GeneralForm extends Component {
         <label htmlFor="location">
           <input
             name="location"
+            id="location-input"
             type="text"
             value={location}
             onChange={this.handleChange}
@@ -57,6 +60,7 @@ class GeneralForm extends Component {
         <label htmlFor="email">
           <input
             name="email"
+            id="email-input"
             type="email"
             value={email}
             onChange={this.handleChange}
@@ -66,6 +70,7 @@ class GeneralForm extends Component {
         <label htmlFor="phone">
           <input
             name="phone"
+            id="phone-input"
             type="tel"
             value={phone}
             onChange={this.handleChange}
@@ -75,7 +80,7 @@ class GeneralForm extends Component {
         <label htmlFor="introduction">
           <textarea
             name="introduction"
-            id=""
+            id="intrudcintroductiontion-input"
             cols="5"
             rows="2"
             value={introduction}
@@ -83,22 +88,26 @@ class GeneralForm extends Component {
             placeholder="Your description"
           ></textarea>
         </label>{" "}
-      </div>
+      </>
     );
 
     const previewContent = (
-      <div id="general-info">
-        <h1 id="name">{name ? name : "Full name"}</h1>
-        <p id="title">{title}</p>
-        <p>{location ? location : "Location"}</p>
-        <p>{email ? email : "Email"}</p>
-        <p>{phone ? phone : "Phone number"}</p>
-        <p>{introduction ? introduction : "Introduction"}</p>
-      </div>
+      <>
+        <h2 id="full-name">{name ? name : "Full name"}</h2>
+        <p className="title aligned">{title}</p>
+        <p className="location aligned">{location ? location : "Location"}</p>
+        <p className="email aligned">{email ? email : "Email"}</p>
+        <p className="phone aligned">{phone ? phone : "Phone number"}</p>
+        <p className="introduction">
+          {introduction ? introduction : "Introduction"}
+        </p>
+      </>
     );
 
     return (
       <EditableForm
+        formClass="general-info-form"
+        previewClass="general-info-preview"
         formChildren={formContent}
         previewChildren={previewContent}
       />

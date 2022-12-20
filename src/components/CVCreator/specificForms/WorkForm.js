@@ -70,7 +70,7 @@ class WorkForm extends Component {
       responsibilities,
     } = this.state;
     const formContent = (
-      <div>
+      <>
         <label htmlFor="company">
           <input
             name="company"
@@ -125,27 +125,31 @@ class WorkForm extends Component {
           addBulletItem={this.addBulletItem}
           editBulletPoint={this.editBulletPoint}
         />
-      </div>
+      </>
     );
 
     const previewContent = (
-      <div className="education-info">
+      <>
         <h4 className="company-name">{company ? company : "Company"}</h4>
         <p className="position">{position ? position : "Position"}</p>
-        <p>{timeStart ? timeStart : "Start Date"}</p>
-        <p>{timeEnd ? timeEnd : "End Date"}</p>
-        <p>{location ? location : "Location"}</p>
+        <p className="date-start">{timeStart ? timeStart : "Start Date"}</p>
+        <p className="date-end">{timeEnd ? timeEnd : "End Date"}</p>
+        <p className="location">{location ? location : "Location"}</p>
 
-        <ul>
+        <ul className="bullet-point-preview-container">
           {responsibilities.map((obj) => (
-            <li key={obj.id}>{obj.responsibility}</li>
+            <li className="bullet-point-preview-item" key={obj.id}>
+              {obj.responsibility}
+            </li>
           ))}
         </ul>
-      </div>
+      </>
     );
 
     return (
       <EditableForm
+        formClass="experience-form"
+        previewClass="experience-preview"
         formChildren={formContent}
         previewChildren={previewContent}
         filterEmptyItems={this.filterEmptyItems}

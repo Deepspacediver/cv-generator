@@ -28,7 +28,11 @@ class BulletList extends Component {
             ></textarea>
           );
         })}
-        <button type="button" onClick={addBulletItem}>
+        <button
+          className="add-btn achievement"
+          type="button"
+          onClick={addBulletItem}
+        >
           Add Achievement
         </button>
       </div>
