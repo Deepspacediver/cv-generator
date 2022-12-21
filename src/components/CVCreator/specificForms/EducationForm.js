@@ -25,6 +25,7 @@ class EducationForm extends Component {
 
   toggleOngoing = (e) => {
     const checkedStatus = e.target.checked;
+    console.log(checkedStatus)
     this.setState({
       ongoingStatus: checkedStatus,
       timeEnd: checkedStatus ? "Ongoing" : "",
@@ -51,30 +52,36 @@ class EducationForm extends Component {
             type="text"
             value={major}
             onChange={this.handleChange}
-            placeholder="Major/Title of the study"
+            placeholder="Title of the study"
           />
         </label>
-        <label htmlFor="timeStart">
-          <input
-            name="timeStart"
-            type="date"
-            value={timeStart}
-            onChange={this.handleChange}
+          <label htmlFor="timeStart">
+            From
+            <input
+              name="timeStart"
+              className="date-start-input"
+              type="date"
+              value={timeStart}
+              onChange={this.handleChange}
+            />
+          </label>
+        <div className="dates-end-form">
+          <label htmlFor="timeEnd">
+            To
+            <input
+              name="timeEnd"
+              className="date-end-input"
+              type="date"
+              value={!ongoingStatus ? timeEnd : ""}
+              disabled={ongoingStatus}
+              onChange={this.handleChange}
+            />
+          </label>
+          <OngoingButton
+            toggleOngoing={this.toggleOngoing}
+            ongoingStatus={ongoingStatus}
           />
-        </label>
-        <label htmlFor="timeEnd">
-          <input
-            name="timeEnd"
-            type="date"
-            value={!ongoingStatus ? timeEnd : ""}
-            disabled={ongoingStatus}
-            onChange={this.handleChange}
-          />
-        </label>
-        <OngoingButton
-          toggleOngoing={this.toggleOngoing}
-          ongoingStatus={ongoingStatus}
-        />
+        </div>
         <label htmlFor="location">
           <input
             name="location"
@@ -90,17 +97,19 @@ class EducationForm extends Component {
     const previewContent = (
       </* className="education-info" */>
         <h4 className="school-name">{school ? school : "School Name"}</h4>
-        <p className="major">{major ? major : "Major/Title of the study"}</p>
-        <p className="date-start">{timeStart ? timeStart : "Start Date"}</p>
-        <p className="date-end">{timeEnd ? timeEnd : "End Date"}</p>
+        <p className="major">{major ? major : "Title of the study"}</p>
+        <div className="dates-container-preview">
+          <p className="date-start">{timeStart ? timeStart : "Start Date"}</p>
+          <p className="date-end">{timeEnd ? timeEnd : "End Date"}</p>
+        </div>
         <p className="location">{location ? location : "Location"}</p>
       </>
     );
 
     return (
       <EditableForm
-        formClass="education-form"
-        previewClass="education-preview"
+        formClass="education form"
+        previewClass="education preview"
         formChildren={formContent}
         previewChildren={previewContent}
       />
