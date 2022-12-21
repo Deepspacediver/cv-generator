@@ -33,7 +33,9 @@ class EditableForm extends Component {
         }}
       >
         {formChildren}
-        <button type="submit">Submit</button>
+        <button className="submit-btn" type="submit">
+          Submit
+        </button>
       </form>
     ) : (
       <div className={previewClass}>
