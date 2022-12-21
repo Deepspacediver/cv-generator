@@ -43,7 +43,11 @@ class CVSection extends Component {
             <div className={formName.toLowerCase() + "-container"} key={obj.id}>
               {obj.form}
               {i === 0 ? null : (
-                <button data-id={obj.id} onClick={this.deleteForm}>
+                <button
+                  className="remove-form-btn"
+                  data-id={obj.id}
+                  onClick={this.deleteForm}
+                >
                   Remove
                 </button>
               )}
