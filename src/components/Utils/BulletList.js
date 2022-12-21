@@ -23,8 +23,6 @@ class BulletList extends Component {
               onChange={(e) => editBulletPoint(i, e)}
               placeholder="Your achievements/responsibilities"
               name={"bullet-point-" + i}
-              cols="15"
-              rows="10"
             ></textarea>
           );
         })}
@@ -33,7 +31,7 @@ class BulletList extends Component {
           type="button"
           onClick={addBulletItem}
         >
-          Add Achievement
+          &#x2B; Responsibility
         </button>
       </div>
     );
