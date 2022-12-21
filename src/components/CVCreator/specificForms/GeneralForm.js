@@ -5,13 +5,12 @@ class GeneralForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "John Doe",
-      title: "Developer",
-      location: "Planet Earth",
-      email: "mymail@mail.com",
-      phone: "123 456 789",
-      introduction:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.",
+      name: "",
+      title: "",
+      location: "",
+      email: "",
+      phone: "",
+      introduction: "",
     };
   }
   handleChange = (e) => {
@@ -27,10 +26,9 @@ class GeneralForm extends Component {
     const { name, title, location, email, phone, introduction } = this.state;
     const formContent = (
       <>
-        <label htmlFor="name">
+        <label id="full-name-label" htmlFor="name">
           <input
             name="name"
-            id="full-name-input"
             type="text"
             value={name}
             onChange={this.handleChange}
@@ -41,6 +39,7 @@ class GeneralForm extends Component {
           <input
             name="title"
             id="title-input"
+            className="aligned"
             type="text"
             value={title}
             onChange={this.handleChange}
@@ -81,8 +80,6 @@ class GeneralForm extends Component {
           <textarea
             name="introduction"
             id="intrudcintroductiontion-input"
-            cols="5"
-            rows="2"
             value={introduction}
             onChange={this.handleChange}
             placeholder="Your description"
@@ -94,20 +91,24 @@ class GeneralForm extends Component {
     const previewContent = (
       <>
         <h2 id="full-name">{name ? name : "Full name"}</h2>
-        <p className="title aligned">{title}</p>
-        <p className="location aligned">{location ? location : "Location"}</p>
+        <p className="title aligned">{title ? title : "Title"}</p>
+        <p className="main-location aligned">
+          {location ? location : "Location"}
+        </p>
         <p className="email aligned">{email ? email : "Email"}</p>
         <p className="phone aligned">{phone ? phone : "Phone number"}</p>
-        <p className="introduction">
-          {introduction ? introduction : "Introduction"}
-        </p>
+        <div className="introduction-wrapper">
+          <p className="introduction">
+            {introduction ? introduction : "Introduction"}
+          </p>
+        </div>
       </>
     );
 
     return (
       <EditableForm
-        formClass="general-info-form"
-        previewClass="general-info-preview"
+        formClass="general-info form"
+        previewClass="general-info preview"
         formChildren={formContent}
         previewChildren={previewContent}
       />
