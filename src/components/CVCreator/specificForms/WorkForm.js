@@ -90,6 +90,7 @@ class WorkForm extends Component {
           />
         </label>
         <label htmlFor="timeStart">
+          From
           <input
             name="timeStart"
             type="date"
@@ -98,19 +99,23 @@ class WorkForm extends Component {
             // placeholder="Email"
           />
         </label>
-        <label htmlFor="timeEnd">
-          <input
-            name="timeEnd"
-            type="date"
-            value={!ongoingStatus ? timeEnd : ""}
-            disabled={ongoingStatus}
-            onChange={this.handleChange}
+        <div className="dates-end-form">
+          <label htmlFor="timeEnd">
+            To
+            <input
+              name="timeEnd"
+              type="date"
+              value={!ongoingStatus ? timeEnd : ""}
+              disabled={ongoingStatus}
+              onChange={this.handleChange}
+            />
+          </label>
+          <OngoingButton
+            toggleOngoing={this.toggleOngoing}
+            ongoingStatus={ongoingStatus}
           />
-        </label>
-        <OngoingButton
-          toggleOngoing={this.toggleOngoing}
-          ongoingStatus={ongoingStatus}
-        />
+        </div>
+
         <label htmlFor="location">
           <input
             name="location"
@@ -132,11 +137,15 @@ class WorkForm extends Component {
       <>
         <h4 className="company-name">{company ? company : "Company"}</h4>
         <p className="position">{position ? position : "Position"}</p>
-        <p className="date-start">{timeStart ? timeStart : "Start Date"}</p>
-        <p className="date-end">{timeEnd ? timeEnd : "End Date"}</p>
+        <div className="dates-container-preview">
+          <p className="date-start">{timeStart ? timeStart : "Start Date"}</p>
+          <p className="date-end">{timeEnd ? timeEnd : "End Date"}</p>
+        </div>
         <p className="location">{location ? location : "Location"}</p>
 
         <ul className="bullet-point-preview-container">
+          {" "}
+          Responsibilities:
           {responsibilities.map((obj) => (
             <li className="bullet-point-preview-item" key={obj.id}>
               {obj.responsibility}
@@ -148,8 +157,8 @@ class WorkForm extends Component {
 
     return (
       <EditableForm
-        formClass="experience-form"
-        previewClass="experience-preview"
+        formClass="experience form"
+        previewClass="experience preview"
         formChildren={formContent}
         previewChildren={previewContent}
         filterEmptyItems={this.filterEmptyItems}
