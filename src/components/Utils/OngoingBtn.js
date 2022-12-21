@@ -1,21 +1,13 @@
 import { Component } from "react";
 
 class OngoingButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: this.props.ongoingStatus,
-    };
-  }
-
   render() {
-    const { checked } = this.state;
-    const { toggleOngoing } = this.props;
+    const { toggleOngoing, ongoingStatus = false } = this.props;
     return (
       <label htmlFor="ongoing">
         Ongoing
         <input
-          checked={checked}
+          checked={ongoingStatus}
           name="ongoing"
           onChange={toggleOngoing}
           type="checkbox"
