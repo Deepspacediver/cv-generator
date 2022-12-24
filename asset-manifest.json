@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cv-generator/static/css/main.58bd63e4.css",
+    "main.css": "/cv-generator/static/css/main.6a626e32.css",
     "main.js": "/cv-generator/static/js/main.5af6adc3.js",
     "index.html": "/cv-generator/index.html",
-    "main.58bd63e4.css.map": "/cv-generator/static/css/main.58bd63e4.css.map",
+    "main.6a626e32.css.map": "/cv-generator/static/css/main.6a626e32.css.map",
     "main.5af6adc3.js.map": "/cv-generator/static/js/main.5af6adc3.js.map"
   },
   "entrypoints": [
-    "static/css/main.58bd63e4.css",
+    "static/css/main.6a626e32.css",
     "static/js/main.5af6adc3.js"
   ]
 }
