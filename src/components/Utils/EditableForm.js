@@ -1,51 +1,39 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class EditableForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEditing: false,
-    };
-  }
+const EditableForm = ({
+  formClass,
+  previewClass,
+  filterEmptyBullets,
+  formChildren,
+  previewChildren,
+}) => {
+  const [editing, setEditing] = useState(false);
+  const handleEditing = () => setEditing(!editing);
 
-  handleEditing = () => {
-    this.setState({
-      isEditing: !this.state.isEditing,
-    });
-  };
+  const content = editing ? (
+    <form
+      className={formClass}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleEditing();
+        if (filterEmptyBullets) filterEmptyBullets();
+      }}
+    >
+      {formChildren}
+      <button className="submit-btn" type="submit">
+        Submit
+      </button>
+    </form>
+  ) : (
+    <div className={previewClass}>
+      {previewChildren}
+      <button className="edit-btn" onClick={handleEditing}>
+        Edit
+      </button>
+    </div>
+  );
 
-  render() {
-    const { isEditing } = this.state;
-    const {
-      formChildren,
-      previewChildren,
-      filterEmptyItems,
-      formClass,
-      previewClass,
-    } = this.props;
-    return isEditing ? (
-      <form
-        className={formClass}
-        onSubmit={(e) => {
-          e.preventDefault();
-          this.handleEditing();
-          if (filterEmptyItems) filterEmptyItems();
-        }}
-      >
-        {formChildren}
-        <button className="submit-btn" type="submit">
-          Submit
-        </button>
-      </form>
-    ) : (
-      <div className={previewClass}>
-        {previewChildren}
-        <button className="edit-btn" onClick={this.handleEditing}>
-          Edit
-        </button>
-      </div>
-    );
-  }
-}
+  return content;
+};
 
 export default EditableForm;

@@ -1,20 +1,15 @@
-import { Component } from "react";
+import React from "react";
 
-class OngoingButton extends Component {
-  render() {
-    const { toggleOngoing, ongoingStatus = false } = this.props;
-    return (
-      <label htmlFor="ongoing">
-        Ongoing
-        <input
-          checked={ongoingStatus}
-          name="ongoing"
-          onChange={toggleOngoing}
-          type="checkbox"
-        ></input>
-      </label>
-    );
-  }
-}
+const OngoingButton = ({ handleOngoing, ongoingStatus = false }) => (
+  <label htmlFor="ongoing">
+    Ongoing
+    <input
+      checked={ongoingStatus}
+      name="ongoing"
+      onChange={handleOngoing}
+      type="checkbox"
+    ></input>
+  </label>
+);
 
 export default OngoingButton;
