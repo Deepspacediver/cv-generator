@@ -14,6 +14,7 @@ const BulletList = ({ bulletPoints, handleAddBullet, handleEditBullet }) => {
             onChange={(e) => handleEditBullet(i, e.target.value)}
             placeholder="Your achievements/responsibilities"
             name={"bullet-point-" + i}
+            autoFocus
           ></textarea>
         );
       })}
